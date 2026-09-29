@@ -122,6 +122,8 @@
       #экран-1 .первый-экран__картинка.картинка--край img { width: 82%; height: auto; margin: -18px auto 0; object-fit: contain; mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); mask-composite: intersect; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 70%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%); -webkit-mask-composite: source-in; }
     }
     @media (min-width: 900px) {
+      #экран-1 .шапка { height: 32px; justify-content: flex-end; gap: 12px; padding-inline: var(--отступ-блока); border-bottom: 0; }
+      #экран-1 .шапка::before { content: ""; flex: 1; border-top: 1px solid var(--цвет-линия); }
       #экран-1 .первый-экран__текст { padding-left: 24px; }
       #экран-1 .лид { font-size: clamp(21px, 1.75vw, 25px); }
       #экран-1 .первый-экран__возможности { font-size: clamp(19px, 1.5vw, 22px); }
@@ -133,12 +135,18 @@
       }
     }
     @media (min-width: 900px) and (max-height: 760px) {
-      #экран-1 .шапка { height: 48px; }
+      #экран-1 .шапка { height: 30px; }
       #экран-1 .блок__внутри { padding-block: 8px 8px; }
       #экран-1 .первый-экран__текст { gap: 10px; }
       #экран-1 .первый-экран__контакт { gap: 8px; }
       #экран-1 .первый-экран__приглашение { padding-block: 7px; }
       #экран-1 .первый-экран__доверие { line-height: 1.35; }
+    }
+    @media (min-width: 900px) and (max-height: 640px) {
+      #экран-1 .блок__внутри { padding-block: 4px; }
+      #экран-1 .первый-экран__текст { gap: 4px; }
+      #экран-1 .первый-экран__контакт { gap: 4px; }
+      #экран-1 .первый-экран__приглашение { padding-block: 5px; }
     }
   </style>
   <header class="шапка">
