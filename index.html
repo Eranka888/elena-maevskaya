@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сайт собирается</title>
+<meta name="description" content="">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Сайт собирается">
+<meta property="og:description" content="">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Inter:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+<style>
+:root {
+  --шрифт-заголовков: Manrope, system-ui, sans-serif;  --шрифт-текста: Inter, system-ui, sans-serif;
+  --цвет-фон: #F2EFEA;  --цвет-фон-2: #F5F1EA;  --цвет-фон-карточки: #F2EFEA;
+  --цвет-текст: #2C3338;  --цвет-текст-мягкий: #5A666D;  --цвет-текст-тихий: #656C6D;
+  --цвет-акцент: #4FA3A5;  --цвет-акцент-тёмный: #58AEB8;  --цвет-акцент-яркий: #B56C4D;  --цвет-на-акценте: #2C3338;
+  --цвет-акцент-глубже: #3A767B;  --цвет-акцент-маркер: #55ABB2;
+  --цвет-линия: #D7CEC3;
+  --цвет-тёмный-фон: #3F5566;  --цвет-тёмный-фон-2: #35505C;  --цвет-тёмный-текст: #F2EFEA;
+  --цвет-тёмный-фон-3: #3B5362;  --цвет-тёмный-фон-4: #3D5262;
+  --цвет-тёплый: #B56C4D;  --цвет-тёплый-мягкий: #E7DED3;
+  --цвет-стекло: color-mix(in srgb, #3F5566 86%, transparent);
+  --тень: 0 12px 34px color-mix(in srgb, #3F5566 6%, transparent);
+  --тень-чип: 0 10px 30px color-mix(in srgb, #3F5566 12%, transparent);
+  --тень-глубокая: 0 24px 60px color-mix(in srgb, #3F5566 35%, transparent);
+  --тень-спутник: 0 30px 60px color-mix(in srgb, #3F5566 70%, transparent);
+  --тень-плиты: 0 40px 100px color-mix(in srgb, #3F5566 70%, transparent);
+  --кегль-h1: 33px;  --кегль-h2: clamp(28px, 4.5vw, 44px);
+  --кегль-текст: clamp(16px, 1vw, 17px);  --кегль-лид: clamp(17px, 1.1vw, 18px);
+  --кегль-мелкий: 14px;  --кегль-кикер: clamp(14px, 1.1vw, 15px);  --кегль-цифра: 30px;  --разрядка-кикера: .03em;
+  --отступ-секции: clamp(56px, 9vw, 120px);  --отступ-блока: clamp(16px, 2vw, 28px);
+  --отступ-секции-тихо: clamp(44px, 7vw, 94px);  --отступ-секции-громко: clamp(65px, 10.4vw, 139px);
+  --ширина: 1120px;  --ширина-колонки: 560px;  --радиус: 16px;  --радиус-малый: 8px;
+  --радиус-карточки: 18px;  --радиус-плитки: 22px;  --радиус-телефон: 46px;  --кнопка-радиус: 14px;
+  --радиус-модуля: 16px;  --нить: 2px;
+  --плавность: cubic-bezier(.2, .7, .2, 1);  --длительность: .25s;
+  --цвет-тёплый-тёмный: #995A40;
+}
+@media (min-width: 900px) { :root { --кегль-h1: clamp(44px, 4vw, 58px); } }
+:root, .светлый { --цвет-кнопки: #4FA3A5; --цвет-на-кнопке: #2C3338; --цвет-кнопки-навёл: var(--цвет-акцент-тёмный); }
+.тёмный { --цвет-кнопки: #58AEB8; --цвет-на-кнопке: #2C3338; --цвет-кнопки-навёл: #75BCC4; }
+
+</style>
+<script>
+(function () {
+  var ЭТАЛОН = 0.535;                  // очко Open Sans — текстовой гарнитуры утверждённых макетов
+  var ПОТОЛОК = 1.2, МЁРТВАЯ = 0.02;   // выше потолка расползается раскладка; ближе к единице не трогаем вовсе
+  var КОМПЬЮТЕР = "(min-width: 900px)";
+  var ТОКЕНЫ = ["--кегль-текст", "--кегль-лид", "--кегль-мелкий", "--кегль-кикер"];
+  var корень = document.documentElement;
+  var холст = document.createElement("canvas").getContext("2d");
+  var ждём = 0;
+
+  function мера(буква) { var м = холст.measureText(буква); return (м && м.actualBoundingBoxAscent) || 0; }
+
+  function применить() {
+    ждём = 0;
+    if (!холст) { return; }
+
+    for (var i = 0; i < ТОКЕНЫ.length; i++) { корень.style.removeProperty(ТОКЕНЫ[i]); }
+    var стиль = getComputedStyle(корень), стек = стиль.getPropertyValue("--шрифт-текста").trim();
+    if (!стек) { return; }
+    холст.font = "400 100px " + стек;
+
+    var очко = Math.max(мера("х"), мера("x")) / 100;
+    if (!(очко > 0)) { return; }
+    var k = Math.round(Math.min(ПОТОЛОК, Math.max(1, ЭТАЛОН / очко)) * 1000) / 1000;
+    if (k - 1 < МЁРТВАЯ || !matchMedia(КОМПЬЮТЕР).matches) { k = 1; }
+    корень.setAttribute("data-очко", очко.toFixed(3));      // чтобы проверка могла сказать числа вслух
+    корень.setAttribute("data-поправка", k.toFixed(3));
+    if (k === 1) { return; }
+    for (i = 0; i < ТОКЕНЫ.length; i++) {
+      var было = стиль.getPropertyValue(ТОКЕНЫ[i]).trim();
+      if (было) { корень.style.setProperty(ТОКЕНЫ[i], "calc((" + было + ") * " + k + ")"); }
+    }
+  }
+
+  применить();
+
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(применить); }
+
+  addEventListener("resize", function () { ждём = ждём || requestAnimationFrame(применить); });
+})();
+</script>
+</head>
+<body>
+<section class="блок блок--первый-экран первый-экран--разворот светлый" id="экран-1" data-тип="первый-экран" data-схема="разворот" data-ключ-макета="светлая" data-картинка="фото">
+  <style>
+    #экран-1 { min-height: 100svh; display: flex; flex-direction: column; padding-bottom: 0; }
+    #экран-1 .блок__внутри { flex: 1; min-height: 0; padding-block: clamp(36px, 5vh, 56px) clamp(16px, 2vh, 24px); }
+    #экран-1 .первый-экран__текст { align-content: center; grid-template-rows: none; gap: clamp(24px, 3.5vh, 32px); }
+    #экран-1 h1 { font-size: calc(var(--кегль-h1) * 1.18); line-height: 1.08; }
+    #экран-1 h1 .акцент { color: var(--цвет-акцент-глубже); }
+    #экран-1 .лид { font-size: clamp(21px, 1.65vw, 24px); line-height: 1.38; }
+    #экран-1 .первый-экран__возможности { color: var(--цвет-текст-мягкий); font-size: clamp(19px, 1.4vw, 21px); line-height: 1.48; }
+    #экран-1 .первый-экран__контакт { display: grid; gap: 12px; width: min(100%, 440px); }
+    #экран-1 .первый-экран__приглашение { margin: 0; padding: 12px 16px; border: 2px solid var(--цвет-акцент-глубже); border-radius: var(--радиус); color: var(--цвет-текст); background: var(--цвет-фон-2); text-align: center; font-family: var(--шрифт-заголовков); font-weight: 700; font-size: 22px; line-height: 1.3; }
+    #экран-1 .первый-экран__действие { display: flex; flex-wrap: nowrap; gap: 12px; margin: 0; }
+    #экран-1 .первый-экран__действие .кнопка { flex: 1 1 0; width: auto; min-width: 0; min-height: 54px; padding-inline: 20px; background: var(--цвет-тёмный-фон-2); color: var(--цвет-тёмный-текст); border: 0; box-shadow: none; font-size: var(--кегль-текст); font-weight: 700; }
+    #экран-1 .первый-экран__действие .кнопка:hover { background: var(--цвет-тёмный-фон); color: var(--цвет-тёмный-текст); }
+    #экран-1 .первый-экран__доверие { margin: 0; max-width: 38em; font-size: 16px; line-height: 1.5; }
+    @media (max-width: 899px) {
+      #экран-1 { min-height: 0; }
+      #экран-1 .блок__внутри { display: flex; flex-direction: column; padding-block: 28px 0; }
+      #экран-1 .первый-экран__текст { order: 0; align-content: start; gap: 14px; }
+      #экран-1 h1 { font-size: var(--кегль-h1); line-height: 1.16; }
+      #экран-1 .лид { font-size: var(--кегль-лид); }
+      #экран-1 .первый-экран__возможности { font-size: var(--кегль-текст); line-height: 1.5; }
+      #экран-1 .первый-экран__контакт { gap: 10px; width: 100%; }
+      #экран-1 .первый-экран__приглашение { padding: 10px 12px; font-size: 20px; border: 0; border-top: 3px solid var(--цвет-акцент-глубже); border-radius: 0; cursor: default; }
+      #экран-1 .первый-экран__действие { flex-direction: row; align-items: stretch; flex-wrap: nowrap; gap: 10px; }
+      #экран-1 .первый-экран__действие .кнопка { flex: 1; width: auto; min-width: 0; }
+      #экран-1 .первый-экран__доверие { font-size: var(--кегль-мелкий); }
+      #экран-1 .первый-экран__картинка { order: 1; width: calc(100% + 2 * var(--отступ-блока)); aspect-ratio: 6 / 5; min-height: 0; margin: 8px calc(-1 * var(--отступ-блока)) 0; border-radius: 0; overflow: hidden; }
+      #экран-1 .первый-экран__картинка.картинка--край img { mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 72%, transparent 100%); object-position: 50% 12%; }
+    }
+    @media (min-width: 900px) {
+      #экран-1 .первый-экран__текст { padding-left: 24px; }
+      #экран-1 .лид { font-size: clamp(21px, 1.75vw, 25px); }
+      #экран-1 .первый-экран__возможности { font-size: clamp(19px, 1.5vw, 22px); }
+      #экран-1 .первый-экран__приглашение { border: 0; border-top: 3px solid var(--цвет-акцент-глубже); border-radius: 0; cursor: default; }
+      #экран-1 .первый-экран__картинка { transform: translateY(-12px) scale(.97); transform-origin: center center; }
+      #экран-1 .первый-экран__картинка.картинка--край img {
+        mask-image: linear-gradient(to bottom, transparent 0, black 9%, black 78%, transparent 92%), linear-gradient(to right, transparent 0, black 16%, black 86%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 9%, black 78%, transparent 92%), linear-gradient(to right, transparent 0, black 16%, black 86%, transparent 100%);
+      }
+    }
+  </style>
+  <header class="шапка">
+    <a class="шапка__лого" href="#">Елена Маевская</a>
+  </header>
+  <span class="пятно пятно--1"></span><span class="пятно пятно--2"></span>
+  <div class="блок__внутри">
+    <div class="первый-экран__текст">
+      <h1>Практические цифровые решения для <em class="акцент">бизнеса</em></h1>
+      <p class="лид">Превращаю опыт, знания и рабочие процессы в понятные системы и инструменты.</p>
+      <p class="первый-экран__возможности">Сайты, боты, калькуляторы, небольшие сервисы и автоматизация рабочих процессов.</p>
+      <div class="первый-экран__контакт">
+        <p class="первый-экран__приглашение">Обсудить задачу</p>
+        <div class="первый-экран__действие">
+          <a class="кнопка" href="https://t.me/Elena_Finansy_Investitsii">Телеграм</a>
+          <a class="кнопка" href="https://max.ru/u/f9LHodD0cOJGwlOdZsTAThVD8Q4Hp5G_kBFKiRRMtFII_dl1DNjMm_QaoZo">Макс</a>
+        </div>
+        <p class="мелкий первый-экран__доверие">Расскажите своими словами, что хотите сделать, улучшить или упростить. Готовое техническое задание не требуется.</p>
+      </div>
+    </div>
+    <figure class="картинка картинка--фото картинка--край первый-экран__картинка" style="--лицо-в-кадре: .28">
+      <picture><source media="(max-width: 899px)" srcset="img/elena-maevskaya-3x4-telefon.webp"><img src="img/elena-maevskaya-3x4.webp" alt="Елена Маевская" data-лицо="50,22" fetchpriority="high"></picture>
+    </figure>
+  </div>
+</section>
+</body>
+</html>
