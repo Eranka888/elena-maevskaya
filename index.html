@@ -106,17 +106,17 @@
     #экран-1 .первый-экран__доверие { margin: 0; max-width: 38em; font-size: 16px; line-height: 1.5; }
     @media (max-width: 899px) {
       #экран-1 { min-height: 0; }
-      #экран-1 .блок__внутри { display: flex; flex-direction: column; padding-block: 28px 0; }
-      #экран-1 .первый-экран__текст { order: 0; align-content: start; gap: 14px; }
+      #экран-1 .блок__внутри { display: flex; flex-direction: column; padding-block: 20px 0; }
+      #экран-1 .первый-экран__текст { order: 0; align-content: start; gap: 9px; }
       #экран-1 h1 { font-size: var(--кегль-h1); line-height: 1.16; }
       #экран-1 .лид { font-size: var(--кегль-лид); }
       #экран-1 .первый-экран__возможности { font-size: var(--кегль-текст); line-height: 1.5; }
-      #экран-1 .первый-экран__контакт { gap: 10px; width: 100%; }
+      #экран-1 .первый-экран__контакт { gap: 8px; width: 100%; }
       #экран-1 .первый-экран__приглашение { padding: 10px 12px; font-size: 20px; border: 0; border-top: 3px solid var(--цвет-акцент-глубже); border-radius: 0; cursor: default; }
       #экран-1 .первый-экран__действие { flex-direction: row; align-items: stretch; flex-wrap: nowrap; gap: 10px; }
       #экран-1 .первый-экран__действие .кнопка { flex: 1; width: auto; min-width: 0; }
       #экран-1 .первый-экран__доверие { font-size: var(--кегль-мелкий); }
-      #экран-1 .первый-экран__картинка { order: 1; width: calc(100% + 2 * var(--отступ-блока)); aspect-ratio: 6 / 5; min-height: 0; margin: 8px calc(-1 * var(--отступ-блока)) 0; border-radius: 0; overflow: hidden; }
+      #экран-1 .первый-экран__картинка { order: 1; width: calc(100% + 2 * var(--отступ-блока)); aspect-ratio: 6 / 5; min-height: 0; margin: 0 calc(-1 * var(--отступ-блока)); border-radius: 0; overflow: hidden; }
       #экран-1 .первый-экран__картинка.картинка--край img { mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 72%, transparent 100%); object-position: 50% 12%; }
     }
     @media (min-width: 900px) {
@@ -124,11 +124,19 @@
       #экран-1 .лид { font-size: clamp(21px, 1.75vw, 25px); }
       #экран-1 .первый-экран__возможности { font-size: clamp(19px, 1.5vw, 22px); }
       #экран-1 .первый-экран__приглашение { border: 0; border-top: 3px solid var(--цвет-акцент-глубже); border-radius: 0; cursor: default; }
-      #экран-1 .первый-экран__картинка { transform: translateY(-12px) scale(.97); transform-origin: center center; }
+      #экран-1 .первый-экран__картинка { min-height: 0; margin: 0; transform: translateY(-8px) scale(.97); transform-origin: center center; }
       #экран-1 .первый-экран__картинка.картинка--край img {
         mask-image: linear-gradient(to bottom, transparent 0, black 9%, black 78%, transparent 92%), linear-gradient(to right, transparent 0, black 16%, black 86%, transparent 100%);
         -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 9%, black 78%, transparent 92%), linear-gradient(to right, transparent 0, black 16%, black 86%, transparent 100%);
       }
+    }
+    @media (min-width: 900px) and (max-height: 760px) {
+      #экран-1 .шапка { height: 48px; }
+      #экран-1 .блок__внутри { padding-block: 8px 8px; }
+      #экран-1 .первый-экран__текст { gap: 10px; }
+      #экран-1 .первый-экран__контакт { gap: 8px; }
+      #экран-1 .первый-экран__приглашение { padding-block: 7px; }
+      #экран-1 .первый-экран__доверие { line-height: 1.35; }
     }
   </style>
   <header class="шапка">
