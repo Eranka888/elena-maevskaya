@@ -108,7 +108,7 @@
 </script>
 </head>
 <body>
-<section class="блок блок--первый-экран первый-экран--разворот светлый" id="экран-1" data-тип="первый-экран" data-схема="разворот" data-ключ-макета="светлая" data-картинка="фото"><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-фон-2, var(--цвет-фон))"></div>
+<section class="блок блок--первый-экран первый-экран--разворот светлый" id="экран-1" data-тип="первый-экран" data-схема="разворот" data-ключ-макета="светлая" data-картинка="фото">
   <style>
     #экран-1 { min-height: 100svh; display: flex; flex-direction: column; padding-bottom: 0; }
     #экран-1 .блок__внутри { flex: 1; min-height: 0; padding-block: clamp(36px, 5vh, 56px) clamp(16px, 2vh, 24px); }
@@ -120,7 +120,7 @@
     #экран-1 .первый-экран__контакт { display: grid; gap: 12px; width: min(100%, 440px); }
     #экран-1 .первый-экран__приглашение { margin: 0; padding: 12px 16px; border: 2px solid var(--цвет-акцент-глубже); border-radius: var(--радиус); color: var(--цвет-текст); background: var(--цвет-фон-2); text-align: center; font-family: var(--шрифт-заголовков); font-weight: 700; font-size: 22px; line-height: 1.3; }
     #экран-1 .первый-экран__действие { display: flex; flex-wrap: nowrap; gap: 12px; margin: 0; }
-    #экран-1 .первый-экран__действие .кнопка { flex: 1 1 0; width: auto; min-width: 0; min-height: 54px; padding-inline: 20px; background: var(--цвет-тёмный-фон-2); color: var(--цвет-тёмный-текст); border: 0; border-radius: var(--кнопка-радиус); box-shadow: none; font-size: var(--кегль-текст); font-weight: 700; }
+    #экран-1 .первый-экран__действие .кнопка { flex: 1 1 0; width: auto; min-width: 0; min-height: 54px; padding-inline: 20px; background: var(--цвет-тёмный-фон-2); color: var(--цвет-тёмный-текст); border: 0; box-shadow: none; font-size: var(--кегль-текст); font-weight: 700; }
     #экран-1 .первый-экран__действие .кнопка:hover { background: var(--цвет-тёмный-фон); color: var(--цвет-тёмный-текст); }
     #экран-1 .первый-экран__доверие { margin: 0; max-width: 38em; font-size: 16px; line-height: 1.5; }
     @media (max-width: 899px) {
@@ -187,11 +187,11 @@
       </div>
     </div>
     <figure class="картинка картинка--фото картинка--край первый-экран__картинка" style="--лицо-в-кадре: .28">
-      <picture><img src="img/elena-maevskaya-3x4.webp" width="800" height="1243" alt="Елена Маевская" data-лицо="50,22" fetchpriority="high"></picture>
+      <picture><img src="img/elena-maevskaya-3x4.webp" alt="Елена Маевская" data-лицо="50,22" fetchpriority="high"></picture>
     </figure>
   </div>
 </section>
-<section class="блок блок--боль блок--тихо светлый второй" id="экран-02" data-тип="боль" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-фон)"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-фон)"></div>
+<section class="блок блок--боль блок--тихо светлый второй" id="экран-02" data-тип="боль" data-вёрстка="своя">
   <svg class="ситуации__символы" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
     <symbol id="экран-02-иконка-сайт" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 13h7M7 16h4"/></symbol>
     <symbol id="экран-02-иконка-повтор" viewBox="0 0 24 24"><path d="M19 8a7 7 0 0 0-12-2L5 8m0 0V4m0 4h4M5 16a7 7 0 0 0 12 2l2-2m0 0v4m0-4h-4"/></symbol>
@@ -230,7 +230,7 @@
     </div>
   </div>
 </section>
-<section class="блок блок--что-получите светлый" id="экран-03" data-тип="что-получите" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-фон-2, var(--цвет-фон))"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-тёмный-фон)"></div>
+<section class="блок блок--что-получите светлый" id="экран-03" data-тип="что-получите" data-вёрстка="своя">
   <div class="блок__внутри">
     <div class="результат__слева">
       <header class="результат__шапка">
@@ -254,7 +254,7 @@
     </div>
   </div>
 </section>
-<section class="блок блок--решение блок--тихо тёмный" id="экран-04" data-тип="решение" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-фон)"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-фон)"></div>
+<section class="блок блок--решение блок--тихо тёмный" id="экран-04" data-тип="решение" data-вёрстка="своя">
   <div class="блок__внутри">
     <header class="процесс__шапка">
       <h2>Как будем работать</h2>
@@ -279,7 +279,7 @@
     </div>
   </div>
 </section>
-<section class="блок блок--программа светлый" id="экран-05" data-тип="программа" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-тёмный-фон)"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-фон-2, var(--цвет-фон))"></div>
+<section class="блок блок--программа светлый" id="экран-05" data-тип="программа" data-вёрстка="своя">
   <div class="блок__внутри">
     <header class="форматы__шапка">
       <h2>Что можно <span>сделать</span></h2>
@@ -326,7 +326,7 @@
     <p class="форматы__итог">Что именно подойдёт, определяем после обсуждения вашей задачи</p>
   </div>
 </section>
-<section class="блок блок--работы светлый второй" id="экран-06" data-тип="работы" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-фон)"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-тёмный-фон)"></div>
+<section class="блок блок--работы светлый второй" id="экран-06" data-тип="работы" data-вёрстка="своя">
   <div class="блок__внутри">
     <header class="проекты__шапка"><h2>Проекты</h2><p>Несколько примеров того, как задача превращается в работающий инструмент</p></header>
     <div class="проекты__список">
@@ -336,7 +336,7 @@
     </div>
   </div>
 </section>
-<section class="блок блок--о-себе тёмный" id="экран-07" data-тип="о-себе" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-фон-2, var(--цвет-фон))"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-фон-2, var(--цвет-фон))"></div>
+<section class="блок блок--о-себе тёмный" id="экран-07" data-тип="о-себе" data-вёрстка="своя">
   <div class="блок__внутри">
     <header class="обо__шапка">
       <p class="обо__метка">Обо мне</p>
@@ -365,7 +365,7 @@
     <div class="обо__завершение" aria-hidden="true"><span></span><span></span><span></span></div>
   </div>
 </section>
-<section class="блок блок--вопросы-ответы блок--тихо светлый второй фон--зерно" id="экран-08" data-тип="вопросы-ответы" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-тёмный-фон)"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-фон)"></div>
+<section class="блок блок--вопросы-ответы блок--тихо светлый второй фон--зерно" id="экран-08" data-тип="вопросы-ответы" data-вёрстка="своя">
   <div class="блок__внутри">
     <header class="чв__шапка">
       <h2 class="чв__заголовок">Частые вопросы</h2>
@@ -399,7 +399,7 @@
     </div>
   </div>
 </section>
-<section class="блок блок--прайс-лист блок--громко светлый" id="экран-09" data-тип="прайс-лист" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-фон-2, var(--цвет-фон))"></div><div class="стык стык--низ" aria-hidden="true" style="--стык-сосед: var(--цвет-тёмный-фон)"></div>
+<section class="блок блок--прайс-лист блок--громко светлый" id="экран-09" data-тип="прайс-лист" data-вёрстка="своя">
   <div class="блок__внутри">
     <header class="прайс__шапка">
       <h2>Стоимость и сроки работ</h2>
@@ -463,7 +463,7 @@
     </div>
   </div>
 </section>
-<section class="блок блок--контакты блок--громко тёмный" id="экран-10" data-тип="контакты" data-вёрстка="своя"><div class="стык стык--верх" aria-hidden="true" style="--стык-сосед: var(--цвет-фон)"></div>
+<section class="блок блок--контакты блок--громко тёмный" id="экран-10" data-тип="контакты" data-вёрстка="своя">
   <div class="блок__внутри">
     <header class="контакты__шапка">
       <p class="контакты__метка">Контакты</p>
@@ -485,12 +485,6 @@
   <div class="финал__подвал-внутри">
     <div class="финал__документы">
       <p class="финал__юр">ИП Маевская Елена Васильевна<br>ОГРНИП 320527500020111 · ИНН 525001182077</p>
-      <nav class="финал__контакты" aria-label="Прямые контакты">
-        <a href="https://t.me/Elena_Finansy_Investitsii">Telegram</a>
-        <a href="https://max.ru/u/f9LHodD0cOJGwlOdZsTAThVD8Q4Hp5G_kBFKiRRMtFII_dl1DNjMm_QaoZo">MAX</a>
-        <a href="https://vk.ru/elena.finansy.investitsii">ВКонтакте</a>
-        <a href="mailto:elenamae@list.ru">Email</a>
-      </nav>
       <p class="финал__год">© 2026</p>
     </div>
     <nav class="финал__навигация" aria-label="Разделы сайта">
